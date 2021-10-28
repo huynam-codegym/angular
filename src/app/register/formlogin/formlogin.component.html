@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12"style="margin-top: 20px">
+      <mat-card style="margin: 50px 0"></mat-card>
+      <form class="form_login" #f="ngForm" (ngSubmit)="f.form.valid && ngSubmit()" novalidate></form>
+      <mat-error class="alert alert-primary">{{status}}</mat-error>
+<!--Name-->
+      <mat-form-field style="width: 350px" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input  name="name" [(ngModel)]="form.name" matInput placeholder="Placeholder" #name="ngModel" minlength="3" maxlength="12" required>
+        <mat-icon style="color: red" matSuffix>perm_identity</mat-icon>
+        <mat-error *ngIf="name.hasError('required')" > Không được để trống dữ liệu </mat-error>
+        <mat-error *ngIf="name.hasError('minlength')"> khong duoc viet it hon 3 ky tu</mat-error>
+      </mat-form-field><br>
+
+      <!--Username-->
+      <mat-form-field style="width: 350px" appearance="outline">
+        <mat-label>Username</mat-label>
+        <input  name="username" [(ngModel)]="form.username" matInput placeholder="Placeholder" #username="ngModel" minlength="3" maxlength="12" required>
+        <mat-icon style="color: red" matSuffix>perm_identity</mat-icon>
+        <mat-error *ngIf="username.hasError('required')" > Không được để trống dữ liệu </mat-error>
+        <mat-error *ngIf="username.hasError('minlength')"> khong duoc viet it hon 3 ky tu</mat-error>
+      </mat-form-field><br>
+
+      <!--Email-->
+      <mat-form-field style="width: 350px" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input  name="email" [(ngModel)]="form.email" matInput placeholder="Placeholder" [formControl]="emailFormControl"   required>
+        <mat-icon style="color: red" matSuffix>email</mat-icon>
+        <mat-error *ngIf="emailFormControl.hasError('required')" > Không được để trống dữ liệu </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('email')">Email k dung dinh dang ex: hong@gmail.com</mat-error>
+      </mat-form-field>
+
+
+    </div>
+  </div>
+</div>
